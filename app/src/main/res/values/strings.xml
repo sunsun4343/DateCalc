@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">DateCalc</string>
+    <string name="app_name">날짜계산기</string>
+    <string name="title_activity_main">날짜계산기</string>
+    <string name="Main1">D-Day 계산</string>
+    <string name="Main2">날짜 계산</string>
+    <string name="base_day">기준일</string>
+    <string name="taget_day">해당일</string>
+    <string name="add_day">추가일</string>
+    <string name="sp_day">기념일</string>
+    <string name="anser">결과</string>
 </resources>

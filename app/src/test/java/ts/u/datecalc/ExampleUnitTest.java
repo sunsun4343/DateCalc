@@ -1,4 +1,4 @@
-package datecalc.u.ts.datecalc;
+package ts.u.datecalc;
 
 import org.junit.Test;
 
