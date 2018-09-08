@@ -15,19 +15,15 @@
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="날자간 차이"
+            android:onClick="OnClick_Between"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="추가 또는 뺀 날"
+            android:onClick="OnClick_Dday"/>
     </LinearLayout>
 
     <LinearLayout

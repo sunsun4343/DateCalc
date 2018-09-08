@@ -1,8 +1,10 @@
 package ts.u.datecalc;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.kakao.adfit.ads.AdListener;
@@ -19,14 +21,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initAdFit();
 
-
-        Button button1 = (Button)findViewById(R.id.button1);
-        button1.setOnClickListener(new Button.OnClickListener() {
-
-        });
-
-
     }
+
+    public  void OnClick_Between(View v)
+    {
+        Intent intent=new Intent(MainActivity.this,BetweenDateActivity.class);
+        startActivity(intent);
+    }
+
+    public  void OnClick_Dday(View v)
+    {
+        Intent intent=new Intent(MainActivity.this,DdayActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onResume(){
