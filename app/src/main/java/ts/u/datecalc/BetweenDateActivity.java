@@ -23,8 +23,8 @@ public class BetweenDateActivity extends AppCompatActivity {
     Calendar fromCalendar;
     Calendar toCalendar;
 
-    Date fromDate;
-    Date toDate;
+//    Date fromDate;
+//    Date toDate;
 
     int differenceDay = 0;
 
@@ -37,15 +37,13 @@ public class BetweenDateActivity extends AppCompatActivity {
         calendarView_to = (CalendarView)findViewById(R.id.calendarView_to);
         textView_result = (TextView)findViewById(R.id.textView_result);
 
-        fromDate = new Date(calendarView_from.getDate());
-        toDate = new Date(calendarView_to.getDate());
-
         fromCalendar = Calendar.getInstance();
         toCalendar = Calendar.getInstance();
 
-        fromCalendar.setTime(fromDate);
-        toCalendar.setTime(toDate);
-
+        fromCalendar.clear();
+        fromCalendar.setTimeInMillis(calendarView_from.getDate());
+        toCalendar.clear();
+        toCalendar.setTimeInMillis(calendarView_to.getDate());
         Calc();
 
         calendarView_from.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -53,6 +51,8 @@ public class BetweenDateActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 fromCalendar.clear();
                 fromCalendar.set(year, month, dayOfMonth);
+
+                Log.d("debug","call");
                 Calc();
             }
         });
@@ -65,7 +65,6 @@ public class BetweenDateActivity extends AppCompatActivity {
                 Calc();
             }
         });
-
 
     }
 
