@@ -10,12 +10,18 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.kakao.adfit.ads.AdListener;
+import com.kakao.adfit.ads.ba.BannerAdView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DdayActivity extends AppCompatActivity {
+
+    private BannerAdView adView = null;
 
     CalendarView calendarView_from;
     EditText editText_day;
@@ -31,6 +37,7 @@ public class DdayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dday);
+        initAdFit();
 
         calendarView_from = (CalendarView)findViewById(R.id.calendarView_from);
         editText_day = (EditText)findViewById(R.id.editText_day);
@@ -85,6 +92,66 @@ public class DdayActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        if (adView != null) {
+            adView.pause();
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (adView != null) {
+            adView.destroy();
+            adView = null;
+        }
+    }
+
+    private void toast(String message) {
+        if (adView == null) return;
+        Toast.makeText(adView.getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void initAdFit() {
+        // AdFit sdk 초기화 시작
+        adView = (BannerAdView) findViewById(R.id.adview);
+
+        adView.setAdListener(new AdListener() {  // 광고 수신 리스너 설정
+
+            @Override
+            public void onAdLoaded() {
+                toast("Banner is loaded");
+            }
+
+            @Override
+            public void onAdFailed(int errorCode) {
+                toast("Failed to load banner :: errorCode = " + errorCode);
+            }
+
+            @Override
+            public void onAdClicked() {
+                toast("Banner is clicked");
+            }
+
+        });
+
+        // 할당 받은 clientId 설정
+        adView.setClientId("DAN-u87xphy9afz5");
+
+
+        adView.loadAd();
+    }
 
     void Calc(){
 

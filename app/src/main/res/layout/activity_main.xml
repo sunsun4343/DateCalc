@@ -36,8 +36,6 @@
 
         <com.kakao.adfit.ads.ba.BannerAdView
             android:id="@+id/adview"
-            clientId="DAN-u87xphy9afz5"
-            requestInterval="60"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true" />
